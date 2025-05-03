@@ -1,54 +1,85 @@
-# React + TypeScript + Vite
+# IAWIA SDK
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The IAWIA SDK is a TypeScript library designed to facilitate integration with the IAWIA extension. It provides a robust verification service that enables secure and efficient zero-knowledge proof verification.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Verification Service**: Core service for handling zero-knowledge proof verifications
+- **TypeScript Support**: Full type safety and autocompletion
+- **Event-Based Communication**: Seamless integration with the IAWIA extension
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install iawia-sdk
+# or
+yarn add iawia-sdk
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Verification Service
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+The verification service is the main component of the SDK, allowing you to verify zero-knowledge proofs with your company's branding.
+
+```typescript
+import { VerificationService } from "iawia-sdk";
+import { ZKType } from "iawia-sdk";
+
+// Initialize the verification service
+const verificationService = new VerificationService({
+  companyName: "Your Company Name",
+  companyLogo: "path/to/your/logo.png",
+});
+
+// Verify zero-knowledge proofs
+await verificationService.verify([
+  ZKType.AGE_VERIFICATION,
+  ZKType.IDENTITY_VERIFICATION,
+]);
 ```
+
+### Configuration
+
+The verification service accepts the following configuration:
+
+```typescript
+interface TVerificationServiceProps {
+  companyName: string; // Your company's name
+  companyLogo: string; // Path to your company's logo
+}
+```
+
+## Zero-Knowledge Proof Types
+
+The SDK supports various types of zero-knowledge proofs:
+
+- `AGE_VERIFICATION`: Verify age without revealing the exact age
+- `IDENTITY_VERIFICATION`: Verify identity without exposing personal information
+- (Additional ZK types as implemented)
+
+## Development
+
+### Building
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+### Testing
+
+```bash
+npm test
+# or
+yarn test
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Support
+
+For support, please [contact information here]
