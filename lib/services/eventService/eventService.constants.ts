@@ -1,0 +1,1 @@
+export const IAWIA_CONNECT_EVENT = "IAWIA_CONNECT";
