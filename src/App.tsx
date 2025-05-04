@@ -1,5 +1,6 @@
 import { ZKType } from "../lib/enums/ZKType";
 import IawiaButton from "../lib/IawiaButton/IawiaButton";
+import { useVerificationListener } from "../lib/main";
 import VerificationService from "../lib/services/verificationService/verificationService";
 
 function App() {
@@ -7,6 +8,8 @@ function App() {
     companyName: "Wamo",
     companyLogo: "https://i.ibb.co/nN85Vq16/logo-black.png",
   });
+
+  useVerificationListener();
 
   return (
     <>
