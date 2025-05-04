@@ -9,13 +9,23 @@ function App() {
     companyLogo: "https://i.ibb.co/nN85Vq16/logo-black.png",
   });
 
-  useVerificationListener();
+  useVerificationListener({
+    onVerificationSuccess: () => {
+      alert("Verification success");
+    },
+    onVerificationFailed: () => {
+      alert("Verification failed");
+    },
+  });
 
   return (
     <>
       <IawiaButton
         onClick={() => {
-          verificationService.verify([ZKType.NATIONALITY_IS_TUR]);
+          verificationService.verify([
+            ZKType.NATIONALITY_IS_TUR,
+            ZKType.AGE_IS_OVER_24,
+          ]);
         }}
       />
     </>

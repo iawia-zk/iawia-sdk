@@ -27,6 +27,12 @@ class VerificationService {
       circuits: circuits,
     };
 
+    // Store expected results in localStorage for later comparison
+    localStorage.setItem(
+      "iawia_expected_results",
+      JSON.stringify(randomFunctions.expectedResults)
+    );
+
     sendIawiaConnectEvent(payload);
   }
 }
