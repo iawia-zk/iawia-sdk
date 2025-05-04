@@ -1,5 +1,6 @@
 import { ZKType } from "../../enums/ZKType";
 import { sendIawiaConnectEvent } from "../eventService/eventService";
+import { readCircuitFilesAsBase64 } from "../fileReaderService";
 import { generateRandomFunctions } from "./verificationService.helpers";
 import { TVerificationServiceProps } from "./verificationService.types";
 
@@ -15,14 +16,16 @@ class VerificationService {
   async verify(zkTypes: ZKType[]) {
     const randomFunctions = generateRandomFunctions(zkTypes);
 
+    const circuits = await readCircuitFilesAsBase64(
+      randomFunctions.circuitPaths
+    );
+
     const payload = {
       companyName: this.companyName,
       companyLogo: this.companyLogo,
       zkTypes: zkTypes,
-      circuits: randomFunctions.circuitPaths,
+      circuits: circuits,
     };
-
-    console.log(payload);
 
     sendIawiaConnectEvent(payload);
   }

@@ -14,6 +14,8 @@ export function generateRandomFunctions(
     () => Math.random() < 0.5
   );
 
+  console.log(randomBooleanArray, "randomBooleanArray");
+
   const randomIndexes = getUniqueRandomNumbers(
     zkTypes.length,
     ZK_RANDOM_FUNCTION_COUNT
@@ -43,7 +45,7 @@ function getRandomFunctions(
 ): string[] {
   const randomFunctions = [];
   let zkIndex = 0;
-  for (let i = 0; i < randomIndexes.length; i++) {
+  for (let i = 0; i < randomBooleanArray.length; i++) {
     if (randomIndexes.includes(i)) {
       randomFunctions.push(getCircuitPathByZkType(zkTypes[zkIndex]));
       zkIndex++;

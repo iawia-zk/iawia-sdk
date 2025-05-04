@@ -11,9 +11,9 @@ The IAWIA SDK is a TypeScript library designed to facilitate integration with th
 ## Installation
 
 ```bash
-npm install iawia-sdk
+npm install @iawia/iawia-sdk
 # or
-yarn add iawia-sdk
+yarn add @iawia/iawia-sdk
 ```
 
 ## Usage
@@ -23,8 +23,7 @@ yarn add iawia-sdk
 The verification service is the main component of the SDK, allowing you to verify zero-knowledge proofs with your company's branding.
 
 ```typescript
-import { VerificationService } from "iawia-sdk";
-import { ZKType } from "iawia-sdk";
+import { VerificationService, ZKType } from "@iawia/iawia-sdk";
 
 // Initialize the verification service
 const verificationService = new VerificationService({
@@ -82,4 +81,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Support
 
-For support, please [contact information here]
+For support, please contact merakserhat@gmail.com
